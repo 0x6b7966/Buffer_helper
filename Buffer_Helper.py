@@ -28,7 +28,7 @@ class Buffer_Over:
 		 print "\n[+]Generated String is:",self.Random_String 
 		 print '\n[+]The New character length is:',len(self.Random_String )
          except KeyboardInterrupt:
-                  print "\n\n[+]-------------------------{GOOD BAY}--------------------------[+]"
+                  print "\n\n[+]-------------------------{GOOD BYE}--------------------------[+]"
                   exit()
  
      def connect_servser(self):
