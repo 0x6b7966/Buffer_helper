@@ -39,7 +39,7 @@ Examples
 ```
 Examples 
 
-+]server ip : 10.195.100.230
+[+]server ip : 10.195.100.230
 
 [+]server port :21
 
@@ -117,7 +117,7 @@ Example:
 
 ```
 
-# all Steps
+# All Steps
 
 
 
@@ -179,9 +179,9 @@ Example:
 
 ttacking system: Kali Linux
 
-*Victim system: Windows 
+* Victim system: Windows 
 
-*Immunity debugger  https://www.immunityinc.com/products/debugger/
+* Immunity debugger  https://www.immunityinc.com/products/debugger/
 
 * FloatFTP - The application we are going to exploit  https://archive.org/details/tucows_367516_Freefloat_FTP_Server
 
