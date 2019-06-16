@@ -181,17 +181,17 @@ ttacking system: Kali Linux
 
 *Victim system: Windows 
 
-*Immunity debugger https://www.immunityinc.com/products/debugger/
+*Immunity debugger  https://www.immunityinc.com/products/debugger/
 
-* FloatFTP - The application we are going to exploit https://archive.org/details/tucows_367516_Freefloat_FTP_Server
+* FloatFTP - The application we are going to exploit  https://archive.org/details/tucows_367516_Freefloat_FTP_Server
 
 
 ## connect me at 
 
 * administrator@jacstory.tech 
 
-*this is first code for me in github
+* this is first code for me in github
 
-*so sorry for my Einglish
+* so sorry for my Einglish
   
-*thank you for reading it 
+* thank you for reading it 
