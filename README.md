@@ -192,6 +192,5 @@ ttacking system: Kali Linux
 
 * this is first code for me in github
 
-* so sorry for my Einglish
   
 * thank you for reading it 
