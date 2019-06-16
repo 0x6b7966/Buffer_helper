@@ -47,14 +47,14 @@ Examples
 
 ```
 
-### over write 
+### over write
 
 3- after the EIP addrres get over write  .
 
 
 * input the  EIP address as hexadecimal . 7755BBFF or 7755bbff .
 
-* buffer_helper will will get the The ASCII Value make over wirte will print it .
+* buffer_helper will compile  hexadecimal unmber to ASCII and prnit out.
 
 * will print out Exact satch at offset .
 
@@ -70,11 +70,11 @@ Examples
 ```
 ### little endian network style  . 
 
-* buffer_helper will aske for JMP ESP address.
+* buffer_helper will ask for JMP ESP address.
 
 * input it as hexadecimal 7755BBFF or 7755bbff 
 
-*the buffer_helper will reversed automatically and  prit it as "\xFF\x\bbx\x55\x77"
+*the buffer_helper will reversed automatically and  print  it as "\xFF\x\bbx\x55\x77"
 
 ```
 Example:
@@ -186,11 +186,8 @@ ttacking system: Kali Linux
 * FloatFTP - The application we are going to exploit  https://archive.org/details/tucows_367516_Freefloat_FTP_Server
 
 
-## connect me at 
+##  for Contact  
 
 * administrator@jacstory.tech 
 
-* this is first code for me in github
-
-  
 * thank you for reading it 
