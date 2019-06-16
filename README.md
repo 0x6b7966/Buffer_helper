@@ -74,7 +74,7 @@ Examples
 
 * input it as hexadecimal 7755BBFF or 7755bbff 
 
-*the buffer_helper will reversed automatically and  print  it as "\xFF\x\bbx\x55\x77"
+* the buffer_helper will reversed automatically and  print  it as "\xFF\x\bbx\x55\x77"
 
 ```
 Example:
@@ -176,8 +176,7 @@ Example:
 ```
 ## Required Software / Setup
 
-
-ttacking system: Kali Linux
+* attacker system: Kali Linux
 
 * Victim system: Windows 
 
