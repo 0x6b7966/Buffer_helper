@@ -49,7 +49,7 @@ Examples
 
 ### over write
 
-3- after the EIP addrres get over write  .
+3- after the EIP address get over write  .
 
 
 * input the  EIP address as hexadecimal . 7755BBFF or 7755bbff .
