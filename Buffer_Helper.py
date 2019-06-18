@@ -1,14 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
-
 import random
 import string
-import socket 
-import json
 import time
-import subprocess
 import readline
 
 class Buffer_Over:
