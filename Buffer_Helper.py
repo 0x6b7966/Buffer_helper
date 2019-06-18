@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
+
 import random
 import string
+import socket 
 import time
 import readline
 
@@ -67,7 +70,7 @@ class Buffer_Over:
 	               break
                     else:
 	               print "\n[+]WE NOT FOUNF THE VALUE IN OUR STRING  "
-	               self.hexadecimal = str(raw_input("\n[+]Enter hexadecimal Crach address : "))                  
+	               self.hexadecimal = str(raw_input("\n[+]Enter hexadecimal Crach address : ")).upper()                 
                  except Exception:
 		       print "\n[+]something goes wrong try again..!!**!! "
                  except KeyboardInterrupt:
@@ -161,6 +164,7 @@ class Buffer_Over:
                   
 if __name__ == '__main__':
    Buffer_Over()
+
 
 
 
